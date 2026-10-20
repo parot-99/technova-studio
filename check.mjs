@@ -20,6 +20,11 @@ for(const language of ['tr','de']){
 }
 const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(match=>match[1]);
 assert.equal(new Set(ids).size,ids.length,'Duplicate HTML IDs');
-for(const match of html.matchAll(/(?:src|href)="(assets\/[^"#]+|(?:app|locales)\.js|styles\.css)"/g))assert.ok(fs.existsSync('dist/'+match[1]),`Missing asset: ${match[1]}`);
+for(const match of html.matchAll(/(?:src|href)="(assets\/[^"#]+|(?:app|locales)\.js|(?:styles|premium)\.css)"/g))assert.ok(fs.existsSync('dist/'+match[1]),`Missing asset: ${match[1]}`);
+for(const match of html.matchAll(/href="#([^"]+)"/g))assert.ok(ids.includes(match[1]),`Missing section target: ${match[1]}`);
+for(const section of ['next-chapter','work','packages','excel','languages','systems','process','faq','contact']){
+  const mobile=html.match(/<nav class="mobile-nav"[^>]*>([\s\S]*?)<\/nav>/)[1];
+  assert.ok(mobile.includes(`href="#${section}"`),`Missing mobile navigation: ${section}`);
+}
 assert.match(html,/https:\/\/www\.technova-solutions\.com\//);
 console.log(`Checked ${visibleKeys.length} page strings, ${englishKeys.length} translations per added language, unique IDs, and local assets.`);

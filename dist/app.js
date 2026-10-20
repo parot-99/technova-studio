@@ -1,4 +1,5 @@
 const english = {
+  navSystems:'Other services',navMore:'Explore',navWhy:'Why a website now?',navLanguages:'Your customers’ languages',navProcess:'How we work',
   skip:'Skip to content', navWork:'Our work', navPackages:'Packages', navExcel:'Excel updates', navFaq:'FAQs', letsTalk:'Let’s talk',
   heroEyebrow:'By Technova Solutions · For Syria and beyond', heroLine1:'Good businesses.', heroLine2:'A fitting digital home.',
   heroDesc:'A clear, considered website that introduces your company, showcases your products, and helps customers reach you. Straightforward packages. Simple steps.',
@@ -47,6 +48,7 @@ const nodes = [...document.querySelectorAll('[data-i18n]')];
 const arabic = Object.fromEntries(nodes.map(node => [node.dataset.i18n, node.innerHTML]));
 Object.assign(arabic,{demoBusy:'جارٍ فحص البيانات التجريبية…',demoSuccess:'تم التحديث التجريبي! يظهر السعر الجديد الآن في نموذج الكتالوج.',demoError:'أدخل سعراً صحيحاً من 1 إلى 99,999 دولار.',selectedCompany:'الباقة التي تهمّك: موقع الشركة',selectedCatalog:'الباقة التي تهمّك: موقع + كتالوج تحدّثه بنفسك'});
 Object.assign(arabic,{pageTitle:'Technova Studio | مواقع الشركات وكتالوجات المنتجات',pageDescription:'مواقع احترافية للشركات والمصانع والمعارض. باقات واضحة تبدأ من 700 دولار، وكتالوجات يمكنك تحديثها بنفسك من Excel. من Technova Solutions.',ogTitle:'Technova Studio | حضور رقمي يليق بأعمالك',ogDescription:'موقع لشركتك. كتالوج لمنتجاتك. وخطوة أسهل نحو عملائك.',uiLanguage:'اختيار اللغة',uiLanguageOptions:'لغة الموقع',uiMainNav:'التنقل الرئيسي',uiMobileNav:'التنقل عبر الجوال',uiHero:'تصوّر توضيحي لموقع شركة وكتالوج منتجات',uiDock:'انتقل بين أقسام الموقع',uiJourney:'خطوات حضورك الرقمي',uiLanguages:'أمثلة على لغات الموقع',uiWorkflow:'مثال على سير العمل',uiTop:'العودة إلى أعلى الصفحة',uiOpenMenu:'فتح القائمة',uiCloseMenu:'إغلاق القائمة',uiHome:'Technova Studio — الصفحة الرئيسية',uiCasa:'زيارة موقع Casa Moderna',uiNasr:'زيارة موقع النصر للنسيج',uiCasaImage:'معاينة موقع Casa Moderna',uiNasrImage:'معاينة موقع النصر للنسيج',waGeneral:'مرحباً Technova Studio، أود الاستفسار عن إنشاء موقع لأعمالي.',waCompany:'مرحباً، أود الاستفسار عن باقة موقع الشركة.',waCatalog:'مرحباً، أود الاستفسار عن باقة الموقع والكتالوج مع التحديث من Excel.'});
+Object.assign(arabic,{navSystems:'خدمات أخرى',navMore:'اكتشف المزيد',navWhy:'لماذا موقع الآن؟',navLanguages:'لغات عملائك',navProcess:'كيف نعمل'});
 let language = 'ar';
 let selectedPackage = null;
 let demoMessage = 'demoStatus';
@@ -95,13 +97,20 @@ function closeMenu(){mobileNav.hidden=true;menu.setAttribute('aria-expanded','fa
 menu.addEventListener('click',()=>{mobileNav.hidden=!mobileNav.hidden;menu.setAttribute('aria-expanded',String(!mobileNav.hidden));setMenuLabel();});
 mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!mobileNav.hidden){closeMenu();menu.focus();}});
-window.matchMedia('(min-width:1001px)').addEventListener('change',event=>{if(event.matches)closeMenu();});
+window.matchMedia('(min-width:1121px)').addEventListener('change',event=>{if(event.matches)closeMenu();else closeExplore();});
+const exploreMenu=document.getElementById('nav-explore');
+function closeExplore(restoreFocus=false){exploreMenu.open=false;if(restoreFocus)exploreMenu.querySelector('summary').focus();}
+exploreMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>closeExplore()));
+exploreMenu.addEventListener('toggle',()=>{if(exploreMenu.open)closeLanguagePicker();});
+document.addEventListener('click',event=>{if(!exploreMenu.contains(event.target))closeExplore();});
+exploreMenu.addEventListener('focusout',event=>{if(!exploreMenu.contains(event.relatedTarget))closeExplore();});
+document.addEventListener('keydown',event=>{if(event.key==='Escape'&&exploreMenu.open){event.preventDefault();closeExplore(true);}});
 const languagePicker=document.getElementById('language-picker');
 const languageToggle=document.getElementById('language-toggle');
 const languageOptions=document.getElementById('language-options');
 const languageButtons=[...languageOptions.querySelectorAll('button')];
 function closeLanguagePicker(restoreFocus=false){languageOptions.hidden=true;languageToggle.setAttribute('aria-expanded','false');if(restoreFocus)languageToggle.focus();}
-function openLanguagePicker(focusOption=false){languageOptions.hidden=false;languageToggle.setAttribute('aria-expanded','true');closeMenu();if(focusOption)(languageButtons.find(button=>button.dataset.language===language)||languageButtons[0]).focus();}
+function openLanguagePicker(focusOption=false){languageOptions.hidden=false;languageToggle.setAttribute('aria-expanded','true');closeMenu();closeExplore();if(focusOption)(languageButtons.find(button=>button.dataset.language===language)||languageButtons[0]).focus();}
 languageToggle.addEventListener('click',()=>languageOptions.hidden?openLanguagePicker():closeLanguagePicker());
 languageToggle.addEventListener('keydown',event=>{if(event.key==='ArrowDown'||event.key==='ArrowUp'){event.preventDefault();openLanguagePicker(true);}});
 languageButtons.forEach(button=>button.addEventListener('click',()=>{setLanguage(button.dataset.language);closeLanguagePicker(true);}));
@@ -194,7 +203,7 @@ function configureReveals(){
 configureReveals();
 motionPreference.addEventListener('change',configureReveals);
 
-const sectionLinks=[...document.querySelectorAll('.desktop-nav a,.section-dock a')];
+const sectionLinks=[...document.querySelectorAll('.desktop-nav a,.mobile-nav a,.section-dock a')];
 if('IntersectionObserver' in window){
   const activeObserver=new IntersectionObserver(entries=>{
     entries.forEach(entry=>{
