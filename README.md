@@ -6,7 +6,7 @@ Arabic-first marketing website for Technova Studio, a service line of Technova S
 
 The current palette uses champagne gold for primary actions and the catalog package, warm ivory surfaces, bronze text accents, and deep forest green for the story and contact sections. `dist/premium.css` keeps this experiment separate from the original palette.
 
-The header links to work, packages, and other services, with an Explore dropdown for the Syria story, Excel updates, languages, process, and FAQs. Mobile navigation includes every section. All labels are translated, and menus support keyboard dismissal.
+The header has a complete section bar in the exact page order: Home, Why a website, Languages, Work, Packages, Excel updates, Other services, Process, FAQs, Contact. Mobile uses the same order in a numbered single-column menu. All labels are translated.
 
 - `dist/`: deployable static website, no build or dependencies required.
 - `.openai/hosting.json`: private Sites identity and static deployment configuration.

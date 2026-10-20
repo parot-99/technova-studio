@@ -36,5 +36,5 @@ const extraLocales={
   }
 };
 
-Object.assign(extraLocales.tr,{navSystems:'Diğer hizmetler',navMore:'Keşfedin',navWhy:'Neden şimdi bir web sitesi?',navLanguages:'Müşterilerinizin dilleri',navProcess:'Nasıl çalışıyoruz'});
-Object.assign(extraLocales.de,{navSystems:'Weitere Leistungen',navMore:'Entdecken',navWhy:'Warum jetzt eine Website?',navLanguages:'Sprachen Ihrer Kunden',navProcess:'So arbeiten wir'});
+Object.assign(extraLocales.tr,{navHome:'Ana sayfa',navSystems:'Diğer hizmetler',navWhy:'Neden web sitesi?',navLanguages:'Diller',navProcess:'Nasıl çalışıyoruz'});
+Object.assign(extraLocales.de,{navHome:'Startseite',navSystems:'Weitere Leistungen',navWhy:'Warum eine Website?',navLanguages:'Sprachen',navProcess:'So arbeiten wir'});

@@ -22,9 +22,13 @@ const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(match=>match[1]);
 assert.equal(new Set(ids).size,ids.length,'Duplicate HTML IDs');
 for(const match of html.matchAll(/(?:src|href)="(assets\/[^"#]+|(?:app|locales)\.js|(?:styles|premium)\.css)"/g))assert.ok(fs.existsSync('dist/'+match[1]),`Missing asset: ${match[1]}`);
 for(const match of html.matchAll(/href="#([^"]+)"/g))assert.ok(ids.includes(match[1]),`Missing section target: ${match[1]}`);
-for(const section of ['next-chapter','work','packages','excel','languages','systems','process','faq','contact']){
-  const mobile=html.match(/<nav class="mobile-nav"[^>]*>([\s\S]*?)<\/nav>/)[1];
-  assert.ok(mobile.includes(`href="#${section}"`),`Missing mobile navigation: ${section}`);
+const expected=['main','next-chapter','languages','work','packages','excel','systems','process','faq','contact'];
+for(const menu of ['desktop-nav','mobile-nav']){
+  const navigation=html.match(new RegExp('<nav class="'+menu+'[^>]*>([\\s\\S]*?)<\\/nav>'))[1];
+  const targets=[...navigation.matchAll(/href="#([^"]+)"/g)].map(match=>match[1]);
+  assert.deepEqual(targets,expected,menu+' must cover all sections in page order');
 }
+const sectionOrder=['main',...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map(item=>typeof item==='string'?item:item[1]);
+assert.deepEqual(sectionOrder,expected,'Navigation must match the actual section order');
 assert.match(html,/https:\/\/www\.technova-solutions\.com\//);
 console.log(`Checked ${visibleKeys.length} page strings, ${englishKeys.length} translations per added language, unique IDs, and local assets.`);
