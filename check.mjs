@@ -30,5 +30,5 @@ for(const menu of ['desktop-nav','mobile-nav']){
 }
 const sectionOrder=['main',...html.matchAll(/<section[^>]*\bid="([^"]+)"/g)].map(item=>typeof item==='string'?item:item[1]);
 assert.deepEqual(sectionOrder,expected,'Navigation must match the actual section order');
-assert.match(html,/https:\/\/www\.technova-solutions\.com\//);
+assert.match(html,/https:\/\/technova-solutions\.com\//);
 console.log(`Checked ${visibleKeys.length} page strings, ${englishKeys.length} translations per added language, unique IDs, and local assets.`);

@@ -38,3 +38,7 @@ const extraLocales={
 
 Object.assign(extraLocales.tr,{navHome:'Ana sayfa',navSystems:'Diğer hizmetler',navWhy:'Neden web sitesi?',navLanguages:'Diller',navProcess:'Nasıl çalışıyoruz'});
 Object.assign(extraLocales.de,{navHome:'Startseite',navSystems:'Weitere Leistungen',navWhy:'Warum eine Website?',navLanguages:'Sprachen',navProcess:'So arbeiten wir'});
+
+Object.assign(extraLocales.tr,{"heroLine1":"İşinizin değeri.","heroLine2":"Dijitalde hayat bulsun.","heroEyebrow":"WEB TASARIMI & DİJİTAL KATALOGLAR · HALEP’TEN DÜNYAYA","showcaseLabel":"Stüdyomuzdan gerçek dünyaya","uiHero":"Technova Studio’dan seçilmiş projeler","uiShowcase":"Proje önizlemesi seçin","sampleProducts":"Örnek ürün verileri","reduceMotion":"Hareketi azalt","nasrDesc":"Fabrikanın boyama ve kumaş terbiye hizmetlerini açıkça tanıtan, iş görüşmesine kolayca ulaşılabilen çok dilli bir web sitesi."});
+
+Object.assign(extraLocales.de,{"heroLine1":"Ihr Unternehmen.","heroLine2":"Digital mit Charakter.","heroEyebrow":"WEBDESIGN & DIGITALE KATALOGE · AUS ALEPPO","showcaseLabel":"Aus unserem Studio in die Welt","uiHero":"Ausgewählte Projekte von Technova Studio","uiShowcase":"Projektvorschau auswählen","sampleProducts":"Beispielhafte Produktdaten","reduceMotion":"Bewegung reduzieren","nasrDesc":"Eine mehrsprachige Website, die Färbung und Textilveredelung verständlich vorstellt und den Weg zur Geschäftsanfrage erleichtert."});

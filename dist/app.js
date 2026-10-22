@@ -44,11 +44,13 @@ Object.assign(english,{
   erpEyebrow:'MORE FROM TECHNOVA SOLUTIONS',erpTitle:'When your business needs<br>more than a website.',erpDesc:'We develop ERP and management systems that connect orders, production, inventory, and delivery, giving you a clearer view of daily operations. We begin by understanding your process, then build the system around it.',erpCta:'Explore Technova Solutions',erpScope:'Separate projects, scoped and quoted after reviewing your needs.',erpDyeTitle:'Dyeing and fabric-finishing factories',erpDyeDesc:'Follow customer orders, fabric batches, dyeing and finishing stages, schedules, and stock.',erpGarmentTitle:'Garment factories',erpGarmentDesc:'Organize materials, production orders, sizes, and colors, and follow the work through to delivery.',erpBeyondTitle:'Beyond the textile industry',erpBeyondDesc:'Systems for manufacturers, warehouses, and distributors, plus dashboards, customer portals, and automation for repetitive work.',erpFlow1:'Order',erpFlow2:'Production',erpFlow3:'Stock',erpFlow4:'Delivery',
   pageTitle:'Technova Studio | Company Websites & Product Catalogs',pageDescription:'Professional company websites from $700, and searchable product catalogs you can update yourself using Excel. By Technova Solutions.',ogTitle:'Technova Studio | A fitting digital home',ogDescription:'Your company. Your products. A simpler connection to your customers.',uiLanguage:'Choose language',uiLanguageOptions:'Website language',uiMainNav:'Main navigation',uiMobileNav:'Mobile navigation',uiHero:'Illustrative company website and product catalog concept',uiDock:'Jump to a website section',uiJourney:'Steps in your digital presence',uiLanguages:'Examples of website languages',uiWorkflow:'Example operational workflow',uiTop:'Back to top',uiOpenMenu:'Open menu',uiCloseMenu:'Close menu',uiHome:'Technova Studio home',uiCasa:'Visit Casa Moderna',uiNasr:'Visit Al Nasr Textile',uiCasaImage:'Casa Moderna website preview',uiNasrImage:'Al Nasr Textile website preview',waGeneral:'Hello Technova Studio, I’d like to discuss a website for my business.',waCompany:'Hello Technova Studio, I’m interested in the Company Website package.',waCatalog:'Hello Technova Studio, I’m interested in the Website + Self-Update Catalog package.'
 });
+Object.assign(english,{"heroLine1":"Your business.","heroLine2":"Beautifully online.","heroEyebrow":"WEB DESIGN & DIGITAL CATALOGS · ALEPPO & BEYOND","showcaseLabel":"From our studio to the real world","uiHero":"Selected Technova Studio projects","uiShowcase":"Choose a project preview","sampleProducts":"Sample product data","reduceMotion":"Reduce motion","nasrDesc":"A multilingual website that makes the factory’s dyeing and fabric-finishing services clear, with a direct path to a business inquiry."});
 const nodes = [...document.querySelectorAll('[data-i18n]')];
 const arabic = Object.fromEntries(nodes.map(node => [node.dataset.i18n, node.innerHTML]));
 Object.assign(arabic,{demoBusy:'جارٍ فحص البيانات التجريبية…',demoSuccess:'تم التحديث التجريبي! يظهر السعر الجديد الآن في نموذج الكتالوج.',demoError:'أدخل سعراً صحيحاً من 1 إلى 99,999 دولار.',selectedCompany:'الباقة التي تهمّك: موقع الشركة',selectedCatalog:'الباقة التي تهمّك: موقع + كتالوج تحدّثه بنفسك'});
 Object.assign(arabic,{pageTitle:'Technova Studio | مواقع الشركات وكتالوجات المنتجات',pageDescription:'مواقع احترافية للشركات والمصانع والمعارض. باقات واضحة تبدأ من 700 دولار، وكتالوجات يمكنك تحديثها بنفسك من Excel. من Technova Solutions.',ogTitle:'Technova Studio | حضور رقمي يليق بأعمالك',ogDescription:'موقع لشركتك. كتالوج لمنتجاتك. وخطوة أسهل نحو عملائك.',uiLanguage:'اختيار اللغة',uiLanguageOptions:'لغة الموقع',uiMainNav:'التنقل الرئيسي',uiMobileNav:'التنقل عبر الجوال',uiHero:'تصوّر توضيحي لموقع شركة وكتالوج منتجات',uiDock:'انتقل بين أقسام الموقع',uiJourney:'خطوات حضورك الرقمي',uiLanguages:'أمثلة على لغات الموقع',uiWorkflow:'مثال على سير العمل',uiTop:'العودة إلى أعلى الصفحة',uiOpenMenu:'فتح القائمة',uiCloseMenu:'إغلاق القائمة',uiHome:'Technova Studio — الصفحة الرئيسية',uiCasa:'زيارة موقع Casa Moderna',uiNasr:'زيارة موقع النصر للنسيج',uiCasaImage:'معاينة موقع Casa Moderna',uiNasrImage:'معاينة موقع النصر للنسيج',waGeneral:'مرحباً Technova Studio، أود الاستفسار عن إنشاء موقع لأعمالي.',waCompany:'مرحباً، أود الاستفسار عن باقة موقع الشركة.',waCatalog:'مرحباً، أود الاستفسار عن باقة الموقع والكتالوج مع التحديث من Excel.'});
 Object.assign(arabic,{navHome:'الرئيسية',navSystems:'خدمات أخرى',navWhy:'لماذا موقع؟',navLanguages:'اللغات',navProcess:'كيف نعمل'});
+Object.assign(arabic,{uiHero:'من أعمال Technova Studio',uiShowcase:'اختر معاينة مشروع'});
 let language = 'ar';
 let selectedPackage = null;
 let demoMessage = 'demoStatus';
@@ -81,9 +83,11 @@ function setLanguage(next){
   document.getElementById('language-flag').src=`assets/flag-${languageInfo[next].flag}.svg`;
   document.getElementById('language-options').setAttribute('aria-label',t('uiLanguageOptions'));
   document.querySelectorAll('[data-language]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.language===next)));
-  for(const [selector,key] of [['[data-nav-label]','uiMainNav'],['#mobile-nav','uiMobileNav'],['[data-hero-label]','uiHero'],['[data-dock-label]','uiDock'],['[data-journey-label]','uiJourney'],['[data-languages-label]','uiLanguages'],['[data-workflow-label]','uiWorkflow'],['#back-to-top','uiTop'],['.brand','uiHome'],['.casa-image','uiCasa'],['.nasr-image','uiNasr']])document.querySelector(selector).setAttribute('aria-label',t(key));
+  for(const [selector,key] of [['[data-nav-label]','uiMainNav'],['#mobile-nav','uiMobileNav'],['[data-hero-label]','uiHero'],['[data-showcase-label]','uiShowcase'],['[data-dock-label]','uiDock'],['[data-journey-label]','uiJourney'],['[data-languages-label]','uiLanguages'],['[data-workflow-label]','uiWorkflow'],['#back-to-top','uiTop'],['.brand','uiHome'],['.casa-image','uiCasa'],['.nasr-image','uiNasr']])document.querySelector(selector).setAttribute('aria-label',t(key));
   document.querySelector('.casa-image img').alt=t('uiCasaImage');
   document.querySelector('.nasr-image img').alt=t('uiNasrImage');
+  document.querySelector('#showcase-casa img').alt=t('uiCasaImage');
+  document.querySelector('#showcase-nasr img').alt=t('uiNasrImage');
   setMenuLabel();
   document.getElementById('demo-status').textContent=t(demoMessage);
   document.getElementById('demo-publish').querySelector('span').textContent=t(demoBusy?'demoBusy':'demoPublish');
@@ -96,6 +100,16 @@ function setMenuLabel(){menu.setAttribute('aria-label',t(mobileNav.hidden?'uiOpe
 function closeMenu(){mobileNav.hidden=true;menu.setAttribute('aria-expanded','false');setMenuLabel();}
 menu.addEventListener('click',()=>{mobileNav.hidden=!mobileNav.hidden;menu.setAttribute('aria-expanded',String(!mobileNav.hidden));setMenuLabel();});
 mobileNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
+document.addEventListener('click',event=>{if(!event.target.closest('.site-header'))closeMenu();});
+document.querySelector('.site-header').addEventListener('focusout',event=>{if(!event.currentTarget.contains(event.relatedTarget))closeMenu();});
+document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',()=>{
+  const target=document.getElementById(link.hash.slice(1));
+  if(target)requestAnimationFrame(()=>target.focus({preventScroll:true}));
+}));
+document.querySelectorAll('[data-project]').forEach(button=>button.addEventListener('click',()=>{
+  document.querySelectorAll('[data-project]').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+  document.querySelectorAll('.showcase-project').forEach(project=>{project.hidden=project.id!=='showcase-'+button.dataset.project;});
+}));
 document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!mobileNav.hidden){closeMenu();menu.focus();}});
 window.matchMedia('(min-width:1121px)').addEventListener('change',event=>{if(event.matches)closeMenu();});
 const languagePicker=document.getElementById('language-picker');
@@ -128,7 +142,7 @@ document.getElementById('demo-publish').addEventListener('click',()=>{
   const status=document.getElementById('demo-status');
   const value=Number(input.value);
   if(!input.checkValidity()||!Number.isInteger(value)||value<1||value>99999){demoMessage='demoError';status.textContent=t(demoMessage);input.setAttribute('aria-invalid','true');input.setAttribute('aria-describedby','demo-status');input.focus();return;}
-  input.removeAttribute('aria-invalid');input.removeAttribute('aria-describedby');
+  input.removeAttribute('aria-invalid');input.setAttribute('aria-describedby','sheet-help');
   const button=document.getElementById('demo-publish');
   demoBusy=true;button.disabled=true;demoMessage='demoBusy';status.textContent=t(demoMessage);button.querySelector('span').textContent=t('demoBusy');
   window.setTimeout(()=>{
@@ -141,76 +155,47 @@ let initialLanguage='ar';
 try{const saved=localStorage.getItem('technova-language');if(Object.hasOwn(dictionaries,saved))initialLanguage=saved;}catch{}
 setLanguage(initialLanguage);
 
-// Native scrolling stays in charge; enhancements are passive and respect motion preferences.
+// Motion is optional. Content stays visible even if an observer never fires.
 const motionPreference=window.matchMedia('(prefers-reduced-motion: reduce)');
+const motionToggle=document.getElementById('motion-toggle');
+let reduceMotion=false;
+try{reduceMotion=localStorage.getItem('technova-reduce-motion')==='true';}catch{}
+function updateMotion(){
+  const reduced=reduceMotion||motionPreference.matches;
+  document.documentElement.classList.toggle('reduced-motion',reduced);
+  motionToggle.setAttribute('aria-pressed',String(reduced));
+  document.querySelectorAll('.reveal').forEach(el=>{if(reduced)el.classList.add('is-visible');});
+}
+motionToggle.addEventListener('click',()=>{reduceMotion=!reduceMotion;try{localStorage.setItem('technova-reduce-motion',String(reduceMotion));}catch{}updateMotion();});
+motionPreference.addEventListener('change',updateMotion);
+updateMotion();
 const progressBar=document.getElementById('reading-progress');
 const header=document.querySelector('.site-header');
 const dock=document.querySelector('.section-dock');
 const contactSection=document.getElementById('contact');
+const sections=[...document.querySelectorAll('main>.hero,main>section[id]')];
+const sectionLinks=[...document.querySelectorAll('.desktop-nav a,.mobile-nav a,.section-dock a')];
 let scrollFrame=0;
 function updateScrollUI(){
   scrollFrame=0;
   const scrollable=document.documentElement.scrollHeight-window.innerHeight;
-  const progress=scrollable>0?Math.max(0,Math.min(1,window.scrollY/scrollable)):0;
-  progressBar.style.transform=`scaleX(${progress})`;
+  progressBar.style.transform='scaleX('+(scrollable>0?Math.max(0,Math.min(1,window.scrollY/scrollable)):0)+')';
   header.classList.toggle('is-scrolled',window.scrollY>24);
-  const contactVisible=contactSection.getBoundingClientRect().top<window.innerHeight*.8;
-  dock.classList.toggle('is-shown',window.scrollY>window.innerHeight*.65&&!contactVisible);
-  const hidden=!dock.classList.contains('is-shown');
-  dock.inert=hidden;
-  dock.setAttribute('aria-hidden',String(hidden));
+  const contactVisible=contactSection.getBoundingClientRect().top<window.innerHeight*.85;
+  const showDock=window.scrollY>window.innerHeight&&!contactVisible;
+  dock.classList.toggle('is-shown',showDock);dock.inert=!showDock;dock.setAttribute('aria-hidden',String(!showDock));
+  const readingLine=header.getBoundingClientRect().height+90;
+  let current='main';
+  for(const section of sections){if(section.getBoundingClientRect().top<=readingLine)current=section.id||'main';}
+  sectionLinks.forEach(link=>{if(link.hash==='#'+current)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});
 }
-function requestScrollUI(){if(!scrollFrame)scrollFrame=window.requestAnimationFrame(updateScrollUI);}
+function requestScrollUI(){if(!scrollFrame)scrollFrame=requestAnimationFrame(updateScrollUI);}
 window.addEventListener('scroll',requestScrollUI,{passive:true});
 window.addEventListener('resize',requestScrollUI,{passive:true});
-document.getElementById('back-to-top').addEventListener('click',()=>{
-  window.scrollTo({top:0,behavior:motionPreference.matches?'instant':'smooth'});
-  document.querySelector('.brand').focus({preventScroll:true});
-});
-const dockObserver=new ResizeObserver(requestScrollUI);
-dockObserver.observe(document.body);
+if('ResizeObserver' in window)new ResizeObserver(requestScrollUI).observe(document.body);
+document.getElementById('back-to-top').addEventListener('click',()=>{window.scrollTo({top:0,behavior:'instant'});document.querySelector('.brand').focus({preventScroll:true});});
 updateScrollUI();
-
-const revealTargets=[...document.querySelectorAll('.hero-copy,.hero-visual,.section-heading,.work-item,.package,.excel-copy,.excel-demo,.syria-intro,.experience-note,.next-steps article,.language-section>div,.erp-copy,.erp-industries,.process-grid>div,.faq-section>div,.contact-inner>div')];
-let revealObserver;
-function configureReveals(){
-  revealObserver?.disconnect();
-  document.documentElement.classList.remove('motion-ready');
-  if(motionPreference.matches||!('IntersectionObserver' in window)){
-    revealTargets.forEach(el=>el.classList.add('is-visible'));
-    return;
-  }
-  revealObserver=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target);}
-    });
-  },{threshold:.08,rootMargin:'0px 0px -24px 0px'});
-  revealTargets.forEach((el,index)=>{
-    el.classList.add('reveal');
-    el.style.setProperty('--reveal-delay',`${(index%2)*70}ms`);
-    if(el.getBoundingClientRect().top<window.innerHeight&&el.getBoundingClientRect().bottom>0)el.classList.add('is-visible');
-    revealObserver.observe(el);
-  });
-  document.documentElement.classList.add('motion-ready');
-}
-configureReveals();
-motionPreference.addEventListener('change',configureReveals);
-
-const sectionLinks=[...document.querySelectorAll('.desktop-nav a,.mobile-nav a,.section-dock a')];
 if('IntersectionObserver' in window){
-  const activeObserver=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(!entry.isIntersecting)return;
-      sectionLinks.forEach(link=>{
-        const target=entry.target.classList.contains('hero')?'main':entry.target.id;
-        const current=link.getAttribute('href')===`#${target}`;
-        if(current)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');
-      });
-    });
-  },{rootMargin:'-15% 0px -55% 0px',threshold:0});
-  document.querySelectorAll('main>section[id],main>.hero').forEach(section=>activeObserver.observe(section));
-  const heroMotionObserver=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>entry.target.classList.toggle('is-in-view',entry.isIntersecting));
-  },{threshold:0});
-  heroMotionObserver.observe(document.querySelector('.hero-visual'));
+  const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}}),{rootMargin:'0px 0px 40px 0px',threshold:0});
+  document.querySelectorAll('.section-heading,.work-item,.package,.steps li,.next-steps article,.process-grid>div').forEach(el=>{el.classList.add('reveal');observer.observe(el);});
 }
