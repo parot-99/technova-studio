@@ -20,6 +20,12 @@
 - Reduce-motion control updates its accessible state and the motion override class. CSS also disables animation under the OS preference.
 - Browser console: no captured errors or warnings during the checks.
 
-## Limits
+## Casa Moderna preview update — 29 October 2026
+
+- Replaced the blurry capture with a fresh 1280 × 800 screenshot of the live Casa Moderna homepage, retaining the original JPEG bytes (81,983 bytes) without recompression.
+- Both hero and portfolio use the new filename and correct intrinsic dimensions; removed the two superseded preview assets.
+- Static content/translation/asset checks passed. Actual local browser review confirmed the Arabic desktop hero and portfolio, mobile portfolio at 390 CSS pixels, loaded images, no horizontal overflow, and no captured console errors or warnings.
+
+## Verification scope
 
 This is a marketing website, not a working customer upload/publishing backend. Live payment availability remains provider-dependent. Checks used the app's Chromium browser; separate Safari/Firefox and physical-device testing, field Core Web Vitals, and a full assistive-technology audit were not performed. Private hosted QA was used because the local browser preview was unreachable.
